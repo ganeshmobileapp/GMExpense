@@ -1,0 +1,23 @@
+machine:
+  node:
+    version: 6.8.1
+
+test:
+  override:
+    - grunt test --force
+
+dependencies:
+  post:
+    - bower install
+
+general:
+  branches:
+    only: 
+      - master
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - grunt build
+      - npm run surge_prod
